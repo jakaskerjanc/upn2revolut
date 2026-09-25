@@ -28,11 +28,11 @@ function PaymentSummary({ payment }: PaymentSummaryProps) {
         <div className="flex items-center gap-3">
           <span
             aria-hidden
-            className="bg-surface-soft font-caps flex size-11 shrink-0 items-center justify-center rounded-full text-lg font-medium"
+            className="bg-surface-soft font-caps flex size-11 shrink-0 items-center justify-center rounded-full text-heading-sm font-medium"
           >
             {initial(payment.name)}
           </span>
-          <p className="font-display text-lg font-medium">{payment.name}</p>
+          <p className="font-display text-heading-sm font-medium">{payment.name}</p>
         </div>
       )}
       <dl className="grid gap-x-6 gap-y-3 sm:grid-cols-[auto_1fr]">
@@ -40,8 +40,8 @@ function PaymentSummary({ payment }: PaymentSummaryProps) {
           .filter(([, value]) => value.trim().length > 0)
           .map(([key, value]) => (
             <div key={key} className="contents">
-              <dt className="text-sm text-muted">{t(key)}</dt>
-              <dd className="text-sm tabular-nums break-words">{value}</dd>
+              <dt className="text-body-sm text-muted">{t(key)}</dt>
+              <dd className="text-body-sm tabular-nums break-words">{value}</dd>
             </div>
           ))}
       </dl>

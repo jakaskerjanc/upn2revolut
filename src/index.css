@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '@fontsource-variable/inter';
 
 /*
  * The Aeonik Pro builds bundled here have consistent vertical metrics —
@@ -47,61 +48,61 @@
 }
 
 :root {
-  --canvas: #f7f8f8;
+  --canvas: #ffffff;
   --surface: #ffffff;
   --surface-soft: #f4f4f4;
   --ink: #191c1f;
+  --ink-pressed: #3a3d40;
   --muted: #505a63;
   --faint: #c9c9cd;
   --line: #e2e2e7;
+  --card-line: #e2e2e7;
   --on-ink: #ffffff;
   --accent: #494fdf;
+  --accent-pressed: #3a40c4;
   --accent-ink: #ffffff;
   --success: #00a87e;
   --danger: #e23b4a;
   --warning: #ec7e00;
   --radius-field: 12px;
   --radius-card: 20px;
-  --shadow-card: 0 8px 24px rgba(25, 28, 31, 0.06);
   --font-display: 'Aeonik Pro', ui-sans-serif, system-ui, sans-serif;
-  --font-sans: 'Aeonik Pro', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
   --font-caps: 'Aeonik Pro Caps', ui-sans-serif, system-ui, sans-serif;
 }
 
+/* Dark mode is Revolut's storytelling canvas: true black with a single
+   elevated step (#16181a) for cards. The white pill is the loudest action,
+   so ink/on-ink simply invert. */
 @media (prefers-color-scheme: dark) {
-/* Uppercase text keeps the font's own cap-friendly metrics, so a centred
-   label, chip or initial needs no per-component logic. Unlayered on purpose:
-   the rule has to outrank the `font-sans`/`font-display` utilities. */
-.uppercase {
-  font-family: var(--font-caps);
-}
-
-:root {
+  :root {
     --canvas: #000000;
-    --surface: #161618;
-    --surface-soft: #1f2126;
+    --surface: #16181a;
+    --surface-soft: rgba(255, 255, 255, 0.08);
     --ink: #ffffff;
+    --ink-pressed: #c9c9cd;
     --muted: rgba(255, 255, 255, 0.72);
     --faint: #8d969e;
     --line: rgba(255, 255, 255, 0.12);
-    --on-ink: #191c1f;
-    --accent: #7f84f6;
-    --accent-ink: #0f1028;
-    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.5);
+    --card-line: transparent;
+    --on-ink: #000000;
   }
 }
 
-/* Keep the raw :root tokens unlayered: the self-referencing theme entries below (--radius-card, --shadow-card, --font-display) resolve only while the raw declarations outrank @layer theme. */
+/* Keep the raw :root tokens unlayered: the self-referencing theme entries below (--radius-card, --font-display) resolve only while the raw declarations outrank @layer theme. */
 @theme inline {
   --color-canvas: var(--canvas);
   --color-surface: var(--surface);
   --color-surface-soft: var(--surface-soft);
   --color-ink: var(--ink);
+  --color-ink-pressed: var(--ink-pressed);
   --color-muted: var(--muted);
   --color-faint: var(--faint);
   --color-line: var(--line);
+  --color-card-line: var(--card-line);
   --color-on-ink: var(--on-ink);
   --color-accent: var(--accent);
+  --color-accent-pressed: var(--accent-pressed);
   --color-accent-ink: var(--accent-ink);
   --color-success: var(--success);
   --color-danger: var(--danger);
@@ -110,11 +111,50 @@
   --radius-field: var(--radius-field);
   --radius-card: var(--radius-card);
 
-  --shadow-card: var(--shadow-card);
-
   --font-display: var(--font-display);
   --font-sans: var(--font-sans);
   --font-caps: var(--font-caps);
+}
+
+/* DESIGN.md type scale. Display/heading sizes pair with `font-display`;
+   body, button and caption sizes are Inter (the default `font-sans`). */
+@theme {
+  --text-display-lg: 48px;
+  --text-display-lg--line-height: 1.21;
+  --text-display-lg--letter-spacing: -0.48px;
+  --text-display-md: 40px;
+  --text-display-md--line-height: 1.2;
+  --text-display-md--letter-spacing: -0.4px;
+  --text-heading-lg: 32px;
+  --text-heading-lg--line-height: 1.19;
+  --text-heading-lg--letter-spacing: -0.32px;
+  --text-heading-md: 24px;
+  --text-heading-md--line-height: 1.33;
+  --text-heading-md--letter-spacing: 0;
+  --text-heading-sm: 20px;
+  --text-heading-sm--line-height: 1.4;
+  --text-heading-sm--letter-spacing: 0;
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 1.56;
+  --text-body-lg--letter-spacing: -0.09px;
+  --text-body-md: 16px;
+  --text-body-md--line-height: 1.5;
+  --text-body-md--letter-spacing: 0.24px;
+  --text-body-sm: 14px;
+  --text-body-sm--line-height: 1.43;
+  --text-body-sm--letter-spacing: 0;
+  --text-button-lg: 20px;
+  --text-button-lg--line-height: 1.4;
+  --text-button-lg--letter-spacing: 0;
+  --text-button-md: 16px;
+  --text-button-md--line-height: 1.5;
+  --text-button-md--letter-spacing: 0.24px;
+  --text-button-sm: 14px;
+  --text-button-sm--line-height: 1.43;
+  --text-button-sm--letter-spacing: 0;
+  --text-caption: 13px;
+  --text-caption--line-height: 1.4;
+  --text-caption--letter-spacing: 0;
 }
 
 @layer base {
@@ -127,6 +167,9 @@
     background-color: var(--color-canvas);
     color: var(--color-ink);
     font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.24px;
     -webkit-font-smoothing: antialiased;
     font-synthesis: none;
   }
@@ -134,16 +177,5 @@
   :focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
-  }
-}
-
-/* Blue radial glow behind the canvas — dark mode only. */
-@media (prefers-color-scheme: dark) {
-  .canvas-glow {
-    background-image: radial-gradient(
-      70% 50% at 50% 0%,
-      rgba(2, 36, 66, 0.9),
-      transparent 70%
-    );
   }
 }

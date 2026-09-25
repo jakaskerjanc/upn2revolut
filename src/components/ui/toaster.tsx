@@ -8,7 +8,7 @@ function Toaster() {
       position="top-center"
       toastOptions={{
         classNames: {
-          toast: 'rounded-card border border-line bg-surface text-ink shadow-lg',
+          toast: 'rounded-card border border-card-line bg-surface text-ink text-body-sm shadow-none',
           description: 'text-muted',
         },
       }}
