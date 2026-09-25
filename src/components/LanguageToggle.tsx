@@ -20,7 +20,7 @@ function LanguageToggle() {
           onClick={() => setLang(code)}
           aria-pressed={lang === code}
           className={cn(
-            'cursor-pointer rounded-full ps-[calc(0.625rem_+_0.15em)] pe-2.5 py-1 text-xs font-medium tracking-[0.15em] uppercase transition-colors',
+            'text-button-sm cursor-pointer rounded-full px-3 py-1 font-semibold uppercase transition-colors',
             lang === code ? 'bg-ink text-on-ink' : 'text-muted hover:text-ink',
           )}
         >

@@ -27,8 +27,8 @@ function StepStatus({ activeIndex }: StepStatusProps) {
             <span
               aria-current={active ? 'step' : undefined}
               className={cn(
-                'text-xs tracking-[0.15em] uppercase',
-                active ? 'text-ink font-medium' : 'text-muted font-normal',
+                'text-caption',
+                active ? 'text-ink font-semibold' : 'text-muted',
               )}
             >
               {label}

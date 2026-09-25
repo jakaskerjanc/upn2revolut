@@ -64,23 +64,23 @@ function PhoneView() {
   }, []);
 
   return (
-    <div className="canvas-glow bg-canvas flex min-h-dvh flex-col">
+    <div className="bg-canvas flex min-h-dvh flex-col">
       <AppHeader />
       <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col items-center justify-center gap-6 px-5 pb-16 sm:px-8">
         {step === 'pay' && sent ? (
           <>
             <Badge>{t('phone.ready')}</Badge>
             <QrCode value={sent.epc} size={240} label={t('phone.saveInstruction')} />
-            <p className="max-w-sm text-center text-sm text-muted">{t('phone.saveHelp')}</p>
+            <p className="text-body-sm max-w-sm text-center text-muted">{t('phone.saveHelp')}</p>
             <Button size="lg" onClick={onSave}>
               {t('phone.saveButton')}
             </Button>
-            <p className="font-display max-w-sm text-center text-xl leading-tight text-balance">
+            <p className="font-display text-heading-sm max-w-sm text-center font-medium text-balance">
               {t('phone.payInstruction')}
             </p>
             {revolutFailed ? (
               <div className="flex max-w-sm flex-col items-center gap-3">
-                <p className="text-center text-sm text-muted">{t('phone.revolutFailed')}</p>
+                <p className="text-body-sm text-center text-muted">{t('phone.revolutFailed')}</p>
                 <Button asChild variant="outline">
                   <a href={REVOLUT_WEB_URL} target="_blank" rel="noreferrer">
                     {t('phone.revolutStore')}
@@ -104,23 +104,23 @@ function PhoneView() {
         ) : state.cameraError ? (
           <div className="flex max-w-sm flex-col items-center gap-4 text-center">
             <p className="text-ink">{t(CAMERA_ERROR_KEYS[state.cameraError])}</p>
-            <p className="text-sm text-muted">{t('phone.cameraDeniedHelp')}</p>
+            <p className="text-body-sm text-muted">{t('phone.cameraDeniedHelp')}</p>
             <Button variant="outline" onClick={() => window.location.reload()}>
               {t('phone.cameraRetry')}
             </Button>
           </div>
         ) : (
           <>
-            <h1 className="font-display text-center text-3xl leading-tight font-medium tracking-[-0.02em]">
+            <h1 className="font-display text-heading-lg text-center font-medium">
               {t('phone.scanTitle')}
             </h1>
-            <p className="max-w-sm text-center text-sm text-muted">{t('phone.scanInstruction')}</p>
+            <p className="text-body-sm max-w-sm text-center text-muted">{t('phone.scanInstruction')}</p>
             <video
               ref={videoRef}
               playsInline
               muted
               aria-label={t('phone.scanTitle')}
-              className="rounded-card w-[min(88vw,26rem)] bg-ink/90 object-cover shadow-sm"
+              className="rounded-card w-[min(88vw,26rem)] bg-black object-cover"
             />
           </>
         )}

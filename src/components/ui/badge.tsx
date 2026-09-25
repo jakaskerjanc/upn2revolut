@@ -3,12 +3,12 @@ import type { ComponentProps } from 'react';
 import { cn } from '../../lib/cn';
 
 const badgeVariants = cva(
-  'inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium tracking-wide uppercase',
+  'inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-caption',
   {
     variants: {
       variant: {
-        default: 'bg-accent/12 text-accent',
-        muted: 'bg-line/50 text-muted',
+        default: 'bg-accent text-accent-ink',
+        muted: 'bg-surface-soft text-ink',
       },
     },
     defaultVariants: { variant: 'default' },

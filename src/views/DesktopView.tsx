@@ -80,17 +80,17 @@ function DesktopView() {
       import.meta.env.VITE_REVOLUT_DEEPLINK,
     );
     return (
-      <div className="canvas-glow bg-canvas flex min-h-dvh flex-col">
+      <div className="bg-canvas flex min-h-dvh flex-col">
         <AppHeader />
         <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col items-center justify-center gap-6 px-5 pb-16 sm:px-8">
           <Badge>{t('phone.ready')}</Badge>
           <QrCode value={sent.epc} size={240} label={t('desktop.epcQrLabel')} />
-          <p className="font-display max-w-sm text-center text-2xl leading-tight font-medium text-balance">
+          <p className="font-display text-heading-md max-w-sm text-center font-medium text-balance">
             {t('desktop.resultInstruction')}
           </p>
           <div className="flex max-w-sm flex-col items-center gap-3">
             <Button
-              variant="ghost"
+              variant="soft"
               size="sm"
               aria-expanded={showLaunchQr}
               aria-controls="revolut-launch-qr"
@@ -115,7 +115,7 @@ function DesktopView() {
             {showLaunchQr && (
               <div id="revolut-launch-qr" className="flex flex-col items-center gap-3">
                 <QrCode value={revolutLink} size={150} label={t('desktop.revolutQrLabel')} />
-                <p className="text-center text-sm text-muted">{t('desktop.revolutHelpCaption')}</p>
+                <p className="text-body-sm text-center text-muted">{t('desktop.revolutHelpCaption')}</p>
               </div>
             )}
           </div>
@@ -142,14 +142,14 @@ function DesktopView() {
   }
 
   return (
-    <div className="canvas-glow bg-canvas flex min-h-dvh flex-col">
+    <div className="bg-canvas flex min-h-dvh flex-col">
       <AppHeader />
       <main className="mx-auto grid w-full max-w-5xl flex-1 gap-12 px-5 pb-16 sm:px-8 lg:grid-cols-2 lg:items-center">
         <section className="flex flex-col items-center gap-5 text-center lg:items-start lg:text-left">
-          <h1 className="font-display text-5xl leading-[1.05] font-medium tracking-[-0.03em] text-balance">
+          <h1 className="font-display text-display-md lg:text-display-lg font-medium text-balance">
             {t('desktop.uploadTitle')}
           </h1>
-          <p className="max-w-md text-lg text-muted">{t('desktop.uploadInstruction')}</p>
+          <p className="text-body-lg max-w-md text-muted">{t('desktop.uploadInstruction')}</p>
           <div
             onDragOver={(event) => event.preventDefault()}
             onDrop={(event) => {
@@ -173,16 +173,16 @@ function DesktopView() {
             <Button size="lg" onClick={() => fileInputRef.current?.click()} disabled={busy}>
               {t('desktop.uploadButton')}
             </Button>
-            <p className="text-center text-sm text-muted">
+            <p className="text-body-sm text-center text-muted">
               {busy ? t('desktop.decoding') : t('desktop.uploadHint')}
             </p>
-            {error && <p className="text-center text-sm text-danger">{t(error)}</p>}
+            {error && <p className="text-body-sm text-center text-danger">{t(error)}</p>}
           </div>
         </section>
         <aside className="flex flex-col items-center gap-3">
-          <p className="text-sm text-muted">{t('desktop.orPhoneTitle')}</p>
+          <p className="text-body-sm text-muted">{t('desktop.orPhoneTitle')}</p>
           <QrCode value={appUrl()} size={150} label={t('desktop.qrLabel')} />
-          <p className="max-w-sm text-center text-sm text-muted">{t('desktop.qrHint')}</p>
+          <p className="text-body-sm max-w-sm text-center text-muted">{t('desktop.qrHint')}</p>
         </aside>
       </main>
       <footer className="flex justify-center px-5 pb-[max(2rem,env(safe-area-inset-bottom))] sm:px-8">
