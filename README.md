@@ -4,7 +4,7 @@ Revolut can scan EPC (SEPA) QR codes but not Slovenian UPN QR codes. This phone 
 the gap: scan the UPN QR on a paper bill, it converts it to EPC, and you save the EPC QR as
 an image to import into Revolut.
 
-**https://jakaskerjanc.github.io/upn2revolut/**
+**https://upn2revolut.jakas.si/**
 
 ## How it works
 
@@ -38,7 +38,7 @@ reconciles on.
 
 ```bash
 pnpm install
-pnpm dev        # http://localhost:5173/upn2revolut/
+pnpm dev        # http://localhost:5173/
 pnpm test       # vitest
 pnpm typecheck
 pnpm build
